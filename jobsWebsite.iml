@@ -22,8 +22,17 @@
     <orderEntry type="library" scope="PROVIDED" name="Tomcat 9.0.4" level="application_server_libraries" />
     <orderEntry type="module-library">
       <library>
+        <CLASSES />
+        <JAVADOC />
+        <SOURCES>
+          <root url="jar://D:/study/DB/mysql-connector-java-5.1.46.zip!/mysql-connector-java-5.1.46/src" />
+        </SOURCES>
+      </library>
+    </orderEntry>
+    <orderEntry type="module-library">
+      <library>
         <CLASSES>
-          <root url="jar://$MODULE_DIR$/../ostpc/MyWebApp/mysql-connector-java-5.1.46-bin.jar!/" />
+          <root url="jar://D:/study/DB/mysql-connector-java-5.1.46/mysql-connector-java-5.1.46-bin.jar!/" />
         </CLASSES>
         <JAVADOC />
         <SOURCES />
