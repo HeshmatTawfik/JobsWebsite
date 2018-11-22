@@ -12,8 +12,8 @@
   <input type="submit" value="signin" />
 </form>
 <span>
-  <b> or register for the first time</b>
-  <br> register<input type="button" value="REGISTER" onclick="register" > <br/>
+  <b> you dont have an account ? register a new one ! </b>
+  <br> <input type="button" value="REGISTER" onclick=window.location.href='RegisteringForm.jsp' > <br/>
 
 </span>
 </body>

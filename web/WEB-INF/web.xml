@@ -4,5 +4,13 @@
            xsi:schemaLocation="http://java.sun.com/xml/ns/javaee
 		  http://java.sun.com/xml/ns/javaee/web-app_3_1.xsd"
            version="3.0">
-
+    <servlet>
+        <servlet-name>RegisteringForm</servlet-name>
+        <jsp-file>/RegisteringForm.jsp</jsp-file>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>RegisteringForm</servlet-name>
+        <url-pattern>/RegisteringForm</url-pattern>
+    </servlet-mapping>
 </web-app>
+
