@@ -6,15 +6,22 @@
 </head>
 <body>
 <form method="post" action="signIn">
+  <fieldset>
 
-  Email:<input type="text" name="email" /><br/>
-  Password:<input type="text" name="pass" /><br/>
+    <label> Email:<input type="text" name="email" /> </label><br/>
+      <label> Password:<input type="text" name="pass" /> </label><br/>
   <input type="submit" value="signin" />
+    </fieldset>
+
 </form>
 <span>
-  <b> you dont have an account ? register a new one ! </b>
+  <fieldset>
+
+  <b> you don't have an account ? register for a new one ! </b>
   <br> <input type="button" value="REGISTER" onclick=window.location.href='RegisteringForm.jsp' > <br/>
+    </fieldset>
 
 </span>
+
 </body>
 </html>

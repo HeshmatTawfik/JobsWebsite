@@ -12,5 +12,13 @@
         <servlet-name>RegisteringForm</servlet-name>
         <url-pattern>/RegisteringForm</url-pattern>
     </servlet-mapping>
+    <servlet>
+        <servlet-name>Register</servlet-name>
+        <servlet-class>Register</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>Register</servlet-name>
+        <url-pattern>/Register</url-pattern>
+    </servlet-mapping>
 </web-app>
 

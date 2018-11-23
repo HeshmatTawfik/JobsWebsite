@@ -1,75 +1,55 @@
-public class Register {
-   private String name;
-   private String pass;
-   private int age;
-   private String city;
-   private String email;
-   private String role; // we will have 2 choices in this role as an employer or applicant and it will be chosen by the user;
+import javax.servlet.RequestDispatcher;
+import javax.servlet.ServletException;
+import javax.servlet.http.HttpServlet;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+import java.io.IOException;
+import java.io.PrintWriter;
+import java.sql.*;
 
-   public String getName() {
-      return name;
-   }
+public class Register extends HttpServlet {
 
-   public void setName(String name) {
-      this.name = name;
-   }
+   protected void doPost(HttpServletRequest request, HttpServletResponse response)
+           throws ServletException, IOException {
+      String username=request.getParameter("name");
+      String pass=request.getParameter("pass");
+      String email=request.getParameter("email");
+      String age= request.getParameter("age");
+      String city=request.getParameter("city");
+      String role=request.getParameter("role");
+      response.setContentType("text/html;charset=UTF-8");
+      PrintWriter out = response.getWriter();
 
-   public String getPass() {
-      return pass;
-   }
+      String insert=" insert into user (USERNAME, USEREMAIL, USERPASS, USERAGE, USERCITY,USERTYPE)"
+              + " values (?,?,?,?,?,?)";
+      String select=" select USEREMAIL from user";
 
-   public void setPass(String pass) {
-      this.pass = pass;
-   }
-
-   public int getAge() {
-      return age;
-   }
-
-   public void setAge(int age) {
-      this.age = age;
-   }
-
-   public String getCity() {
-      return city;
-   }
-
-   public void setCity(String city) {
-      this.city = city;
-   }
-
-   public String getEmail() {
-      return email;
-   }
-
-   public void setEmail(String email) {
-      this.email = email;
-   }
-
-   public String getRole() {
-      return role;
-   }
-
-   public void setRole(String role) {
-      this.role = role;
-   }
-
-
-public Register(String name,String pass,int age ,String city,String email,String role){
-   this.setName(name);
-   this.setPass(pass);
-   this.setAge(age);
-   this.setCity(city);
-  this.setEmail(email);
-  this.setRole(role);
-   }
-   static   Register register (String name,String pass,int age,String city,String email,String role){
-   Register user=new Register(name, pass, age, city, email, role);
-   if (user.role.equals("applicant")){
+      try {
+      if(username!=""&&email!=""&&pass!=""&&age!="" &&city!=""&&role!="") {
+         Connection conn=ConnectionManger.getConnection();
+        Statement st=conn.createStatement();
+        ResultSet rs=st.executeQuery(select);
+         PreparedStatement stmt = conn.prepareStatement(insert);
+          stmt.setString(1, username);
+          stmt.setString(2, email);
+          stmt.setString(3, pass);
+          stmt.setString(4, age);
+          stmt.setString(5, city);
+          stmt.setString(6, role);
+          stmt.execute();
+          RequestDispatcher rd = request.getRequestDispatcher("RegisteringForm.jsp");
+          rd.include(request, response);
+          out.println("<div align=\"center\">\n" + "<span style=\"width:50px;margin-top:20px;color:black;font-size:30px;font-weight:bold;\">Successfully Added A New User</span>" + "</div>");
+       }
+       else {
+          out.println("<div align=\"center\">\n" + "<span style=\"width:50px;margin-top:20px;color:black;font-size:30px;font-weight:bold;\">Please fill all fields !</span>" + "</div>");
+          RequestDispatcher rd = request.getRequestDispatcher("RegisteringForm.jsp");
+          rd.include(request, response);
+       }
+      }
+      catch (Exception e) {
+         e.printStackTrace();
+      }
 
    }
-   if (user.role.equals("employer")){
-
-   }
-return user;}
    }

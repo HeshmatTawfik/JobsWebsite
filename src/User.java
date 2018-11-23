@@ -1,4 +1,4 @@
-public class User {
+public class User  {
     private int id;
     private String name;
     private String pass;
@@ -7,9 +7,8 @@ public class User {
     private String email;
     boolean isEmployer;
     private int appliedJob;
-    private int AppliedJob;
-    private int postedjobs;
-    public int a;
+    private int postedjob;
+
     public int getId() {
         return id;
     }
@@ -74,14 +73,12 @@ public class User {
         this.appliedJob = appliedJob;
     }
 
-    public int getPostedjobs() {
-        return postedjobs;
+
+    public int getPostedjob() {
+        return postedjob;
     }
 
-    public void setPostedjobs(int postedjobs) {
-        this.postedjobs = postedjobs;
+    public void setPostedjob(int postedjob) {
+        this.postedjob = postedjob;
     }
-
-
-
 }
