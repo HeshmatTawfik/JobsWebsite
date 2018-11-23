@@ -12,17 +12,34 @@
 </head>
 <body>
 <form method="post" action="Register">
-
-    Email:<input type="text" name="email" /><br/>
-    Password:<input type="text" name="pass" /><br/>
-    Name:<input type="text" name="Name" /><br/>
-    Age:<input type="number" name="Age"  min="18" max="90"   oninvalid="setCustomValidity('cant be older than 90 ')" /><br/>
-    City:<input type="text" name="City" /><br/>
-    choose a role:<br/>
-    employer:<input type="radio" name="role" value="employer"><br/>
-    applicant:<input type="radio" name="role" value="applicant"><br/>
+<fieldset>
+  <label> Email:<input type="text" id="1" name="email"  /><br/></label>
+    <label>   Password:<input type="password" id="2" name="pass" /><br/></label>
+    <label>   Name:<input type="text" id="3" name="name" /><br/></label>
+    <label> Age:<input type="number" id="4" name="age" /><br/></label>
+    <label> City:<input type="text" id="5" name="city" /><br/></label>
+    <label> choose a role:<br/></label>
+    <label> employer:<input type="radio" id="6" name="role" value="employer"><br/></label>
+    <label>  applicant:<input type="radio" id="7" name="role" value="applicant"><br/></label>
 
     <input type="submit" value="submit" />
+</fieldset>
 </form>
+<script>
+/*    function validation() {
+        var email=document.getElementById.value('1');
+        var pass=document.getElementById.value('2');
+        var name=document.getElementById.value('3');
+        var age=document.getElementById.value('4');
+        var city=document.getElementById.value('5');
+        var employer=document.getElementById.value('6');
+        var applicant=document.getElementById.value('7');
+
+        if (email==""||pass==""||name==""||age==""||city==""||(employer==""||applicant=="")){
+    alert('field is empty');
+    return false;
+}
+    }*/
+</script>
 </body>
 </html>
