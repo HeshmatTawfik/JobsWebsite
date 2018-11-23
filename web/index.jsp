@@ -5,10 +5,10 @@
   <title>welcome page</title>
 </head>
 <body>
-<form method="post" action="signIn">
+<form method="post" action="Login">
 
   Email:<input type="text" name="email" /><br/>
-  Password:<input type="text" name="pass" /><br/>
+  Password:<input type="password" name="pass" /><br/>
   <input type="submit" value="signin" />
 </form>
 <span>

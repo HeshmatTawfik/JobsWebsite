@@ -16,7 +16,7 @@
     Email:<input type="text" name="email" /><br/>
     Password:<input type="text" name="pass" /><br/>
     Name:<input type="text" name="Name" /><br/>
-    Age:<input type="number" name="Age" /><br/>
+    Age:<input type="number" name="Age"  min="18" max="90"   oninvalid="setCustomValidity('cant be older than 90 ')" /><br/>
     City:<input type="text" name="City" /><br/>
     choose a role:<br/>
     employer:<input type="radio" name="role" value="employer"><br/>

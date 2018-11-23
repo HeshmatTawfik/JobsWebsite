@@ -9,7 +9,28 @@ public class User {
     private int appliedJob;
     private int AppliedJob;
     private int postedjobs;
+
+    public String getRole() {
+        return role;
+    }
+
+    public void setRole(String role) {
+        this.role = role;
+    }
+
+    private String role;
+
+    public boolean isCanLog() {
+        return canLog;
+    }
+
+    public void setCanLog(boolean canLog) {
+        this.canLog = canLog;
+    }
+
+    private boolean canLog;
     public int a;
+
     public int getId() {
         return id;
     }
@@ -82,6 +103,24 @@ public class User {
         this.postedjobs = postedjobs;
     }
 
+    public User() {
+    }
+
+    public User(String name, String pass) {
+        this.setName(name);
+        this.setPass(pass);
+
+    }
+
+    public User(String name, String email, String pass, int age, String city, String role) {
+        this.setName(name);
+        this.setEmail(email);
+        this.setPass(pass);
+        this.setAge(age);
+        this.setCity(city);
+        this.setRole(role);
+
+    }
 
 
 }
