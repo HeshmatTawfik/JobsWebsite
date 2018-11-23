@@ -7,7 +7,7 @@ public class User {
     private String email;
     boolean isEmployer;
     private int appliedJob;
-    private int AppliedJob;
+
     private int postedjobs;
 
     public String getRole() {
