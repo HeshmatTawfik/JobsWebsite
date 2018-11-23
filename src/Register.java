@@ -50,6 +50,6 @@ public class Register extends HttpServlet {
       catch (Exception e) {
          e.printStackTrace();
       }
-
+////////
    }
    }

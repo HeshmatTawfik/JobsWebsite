@@ -14,7 +14,7 @@
 <form method="post" action="Register">
 <fieldset>
   <label> Email:<input type="text" id="1" name="email"  /><br/></label>
-    <label>   Password:<input type="text" id="2" name="pass" /><br/></label>
+    <label>   Password:<input type="password" id="2" name="pass" /><br/></label>
     <label>   Name:<input type="text" id="3" name="name" /><br/></label>
     <label> Age:<input type="number" id="4" name="age" /><br/></label>
     <label> City:<input type="text" id="5" name="city" /><br/></label>
