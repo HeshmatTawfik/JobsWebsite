@@ -13,12 +13,23 @@
         <url-pattern>/RegisteringForm</url-pattern>
     </servlet-mapping>
     <servlet>
-        <servlet-name>Register</servlet-name>
-        <servlet-class>Register</servlet-class>
+        <servlet-name>Login</servlet-name>
+        <servlet-class>Login</servlet-class>
     </servlet>
     <servlet-mapping>
-        <servlet-name>Register</servlet-name>
-        <url-pattern>/Register</url-pattern>
+        <servlet-name>Login</servlet-name>
+        <url-pattern>/Login</url-pattern>
     </servlet-mapping>
+    <servlet>
+        <servlet-name>ProfilePage</servlet-name>
+        <jsp-file>/ProfilePage.jsp</jsp-file>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>ProfilePage</servlet-name>
+
+        <url-pattern>/ProfilePage</url-pattern>
+
+    </servlet-mapping>
+
 </web-app>
 

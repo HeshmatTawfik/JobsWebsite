@@ -5,23 +5,16 @@
   <title>welcome page</title>
 </head>
 <body>
-<form method="post" action="signIn">
-  <fieldset>
+<form method="post" action="Login">
 
-    <label> Email:<input type="text" name="email" /> </label><br/>
-      <label> Password:<input type="text" name="pass" /> </label><br/>
+  Email:<input type="text" name="email" /><br/>
+  Password:<input type="password" name="pass" /><br/>
   <input type="submit" value="signin" />
-    </fieldset>
-
 </form>
 <span>
-  <fieldset>
-
-  <b> you don't have an account ? register for a new one ! </b>
+  <b> you dont have an account ? register a new one ! </b>
   <br> <input type="button" value="REGISTER" onclick=window.location.href='RegisteringForm.jsp' > <br/>
-    </fieldset>
 
 </span>
-
 </body>
 </html>
