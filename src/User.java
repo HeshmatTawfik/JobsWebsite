@@ -106,8 +106,8 @@ public class User {
     public User() {
     }
 
-    public User(String name, String pass) {
-        this.setName(name);
+    public User(String email, String pass) {
+        this.setEmail(email);
         this.setPass(pass);
 
     }

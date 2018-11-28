@@ -7,15 +7,18 @@ import java.sql.*;
 public class Login extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws IOException, ServletException {
 
-        String loginName = request.getParameter("email");
+        String loginEmail = request.getParameter("email");
         String logInpass = request.getParameter("pass");
         PrintWriter out = response.getWriter();
         response.setContentType("text/html;charset=UTF-8");
-        User userLogin = new User(loginName, logInpass);
-        if (UserDAO.userLogin(userLogin.getName(), userLogin.getPass(), userLogin)) {
+        User userLogin = new User(loginEmail, logInpass);
+
+       //  if (UserDAO.userLogin(new User().getName(), new User().getPass(), new User())){
+        if (UserDAO.userLogin(userLogin.getEmail(), userLogin.getPass(), userLogin)) {
             HttpSession session = request.getSession();
             response.setHeader("Cache-Control", "no-cache, no-store, must-revalidate");
-            session.setAttribute("email", loginName);
+            session.setAttribute("email", loginEmail);
+            session.setAttribute("username",userLogin.getName());
             response.sendRedirect("ProfilePage");
             session.setAttribute("userSession", "loggedin");
         } else {
@@ -23,6 +26,7 @@ public class Login extends HttpServlet {
             out.println("Username or Password incorrect");
             rs.include(request, response);
         }
+
 
     }
 

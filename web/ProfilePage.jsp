@@ -9,7 +9,7 @@
 <html>
 <head>
     <title>profile Page</title>
-    <h1>Hello <%=  session.getAttribute("email")%></h1>
+    <h1>Hello <%=  session.getAttribute("username")%></h1>
 </head>
 <body>
 
