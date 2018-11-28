@@ -5,6 +5,7 @@
   <title>welcome page</title>
 </head>
 <body>
+
 <form method="post" action="Login">
   <fieldset>
     <label> Email:<input type="text" name="email" /><br/> </label>
@@ -12,6 +13,12 @@
   <input type="submit" value="signin" />
     </fieldset>
 </form>
+<%
+    if(session.getAttribute("email")!=null){
+        response.sendRedirect("ProfilePage.jsp");
+    }
+
+%>
 <span>
   <fieldset>
   <b> you dont have an account ? register a new one ! </b>
