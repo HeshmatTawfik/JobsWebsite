@@ -1,3 +1,4 @@
+
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
@@ -8,6 +9,7 @@ import java.io.PrintWriter;
 import java.sql.*;
 
 public class Register extends HttpServlet {
+    static boolean  unique=true;
 
    protected void doPost(HttpServletRequest request, HttpServletResponse response)
            throws ServletException, IOException {
@@ -27,19 +29,30 @@ public class Register extends HttpServlet {
       try {
       if(username!=""&&email!=""&&pass!=""&&age!="" &&city!=""&&role!="") {
          Connection conn=ConnectionManger.getConnection();
-        Statement st=conn.createStatement();
-        ResultSet rs=st.executeQuery(select);
-         PreparedStatement stmt = conn.prepareStatement(insert);
-          stmt.setString(1, username);
-          stmt.setString(2, email);
-          stmt.setString(3, pass);
-          stmt.setString(4, age);
-          stmt.setString(5, city);
-          stmt.setString(6, role);
-          stmt.execute();
-          RequestDispatcher rd = request.getRequestDispatcher("RegisteringForm.jsp");
-          rd.include(request, response);
-          out.println("<div align=\"center\">\n" + "<span style=\"width:50px;margin-top:20px;color:black;font-size:30px;font-weight:bold;\">Successfully Added A New User</span>" + "</div>");
+         Statement st=conn.createStatement();
+         ResultSet rs=st.executeQuery(select);
+         while (rs.next()){
+             String mail=rs.getString("USEREMAIL");
+             if (mail.equals(email)){
+                 unique=false;
+
+                 throw new SQLIntegrityConstraintViolationException();
+             }
+             if (unique) {
+                 PreparedStatement stmt = conn.prepareStatement(insert);
+                 stmt.setString(1, username);
+                 stmt.setString(2, email);
+                 stmt.setString(3, pass);
+                 stmt.setString(4, age);
+                 stmt.setString(5, city);
+                 stmt.setString(6, role);
+                 stmt.execute();
+                 RequestDispatcher rd = request.getRequestDispatcher("RegisteringForm.jsp");
+                 rd.include(request, response);
+                 out.println("<div align=\"center\">\n" + "<span style=\"width:50px;margin-top:20px;color:black;font-size:30px;font-weight:bold;\">Successfully Added A New User</span>" + "</div>");
+             }
+         }
+
        }
        else {
           out.println("<div align=\"center\">\n" + "<span style=\"width:50px;margin-top:20px;color:black;font-size:30px;font-weight:bold;\">Please fill all fields !</span>" + "</div>");
@@ -48,6 +61,12 @@ public class Register extends HttpServlet {
        }
       }
       catch (Exception e) {
+          RequestDispatcher rd = request.getRequestDispatcher("RegisteringForm.jsp");
+          rd.include(request, response);
+                out.println(" email already used ! try another email ");
+
+
+
          e.printStackTrace();
       }
 ////////
