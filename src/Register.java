@@ -9,9 +9,18 @@ import java.io.PrintWriter;
 import java.sql.*;
 
 public class Register extends HttpServlet {
-    static boolean  unique=true;
+    public boolean isUnique() {
+        return unique;
+    }
 
-   protected void doPost(HttpServletRequest request, HttpServletResponse response)
+    public void setUnique(boolean unique) {
+        this.unique = unique;
+    }
+
+    boolean  unique;
+
+
+    protected void doPost(HttpServletRequest request, HttpServletResponse response)
            throws ServletException, IOException {
       String username=request.getParameter("name");
       String pass=request.getParameter("pass");
@@ -28,30 +37,40 @@ public class Register extends HttpServlet {
 
       try {
       if(username!=""&&email!=""&&pass!=""&&age!="" &&city!=""&&role!="") {
+          setUnique(true);
          Connection conn=ConnectionManger.getConnection();
          Statement st=conn.createStatement();
          ResultSet rs=st.executeQuery(select);
          while (rs.next()){
+          if(!unique){
+              break;
+          }
              String mail=rs.getString("USEREMAIL");
              if (mail.equals(email)){
-                 unique=false;
-
-                 throw new SQLIntegrityConstraintViolationException();
-             }
-             if (unique) {
-                 PreparedStatement stmt = conn.prepareStatement(insert);
-                 stmt.setString(1, username);
-                 stmt.setString(2, email);
-                 stmt.setString(3, pass);
-                 stmt.setString(4, age);
-                 stmt.setString(5, city);
-                 stmt.setString(6, role);
-                 stmt.execute();
                  RequestDispatcher rd = request.getRequestDispatcher("RegisteringForm.jsp");
                  rd.include(request, response);
-                 out.println("<div align=\"center\">\n" + "<span style=\"width:50px;margin-top:20px;color:black;font-size:30px;font-weight:bold;\">Successfully Added A New User</span>" + "</div>");
+                 out.println("<div align=\"center\">\n" + "<span style=\"width:50px;margin-top:20px;color:black;font-size:30px;font-weight:bold;\">email already registered !try another email ! </span>" + "</div>");
+                 unique=false;
+
+                 throw new SQLIntegrityConstraintViolationException(" email already used ! try another email ");
+
              }
-         }
+
+             }
+          if (unique) {
+              PreparedStatement stmt = conn.prepareStatement(insert);
+              stmt.setString(1, username);
+              stmt.setString(2, email);
+              stmt.setString(3, pass);
+              stmt.setString(4, age);
+              stmt.setString(5, city);
+              stmt.setString(6, role);
+              stmt.execute();
+              RequestDispatcher rd = request.getRequestDispatcher("RegisteringForm.jsp");
+              rd.include(request, response);
+              out.println("<div align=\"center\">\n" + "<span style=\"width:50px;margin-top:20px;color:black;font-size:30px;font-weight:bold;\">Successfully Added A New User</span>" + "</div>");
+          }
+
 
        }
        else {
@@ -61,13 +80,8 @@ public class Register extends HttpServlet {
        }
       }
       catch (Exception e) {
-          RequestDispatcher rd = request.getRequestDispatcher("RegisteringForm.jsp");
-          rd.include(request, response);
-                out.println(" email already used ! try another email ");
 
-
-
-         e.printStackTrace();
+          e.printStackTrace();
       }
 ////////
    }
