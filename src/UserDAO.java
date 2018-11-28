@@ -1,4 +1,5 @@
 import java.sql.Connection;
+import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.Statement;
 
@@ -10,10 +11,14 @@ public class UserDAO {/**user database access object*/
     public static boolean userLogin(String email, String password, User user) {
 
         Connection con = ConnectionManger.getConnection();
-        String employerSqlLogin = "select USERNAME,USEREMAIL,USERPASS,USERTYPE from USER where USEREMAIL='" + email + "'" + " and USERPASS='" + password + "'";
+      // String employerSqlLogin = "select USERNAME,USEREMAIL,USERPASS,USERTYPE from USER where USEREMAIL='" + email + "'" + " and USERPASS='" + password + "'";
+        String employerSqlLogin = "select USERNAME,USEREMAIL,USERPASS,USERTYPE from USER where USEREMAIL= ? and USERPASS= ?";
+
         try {
-            Statement stmt = con.createStatement();
-            ResultSet rs1 = stmt.executeQuery(employerSqlLogin);
+            PreparedStatement p= con.prepareStatement(employerSqlLogin);
+            p.setString(1,email);
+            p.setString(2,password);
+            ResultSet rs1 = p.executeQuery();
 
             if (rs1.next()) {
                 /**valid user*/

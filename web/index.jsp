@@ -8,7 +8,7 @@
 
 <form method="post" action="Login">
   <fieldset>
-    <label> Email:<input type="text" name="email" /><br/> </label>
+    <label > Email:<input type="text" name="email" /><br/> </label>
       <label>Password:<input type="password" name="pass" /><br/> </label>
   <input type="submit" value="signin" />
     </fieldset>
