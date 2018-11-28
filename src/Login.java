@@ -19,9 +19,12 @@ public class Login extends HttpServlet {
             response.setHeader("Cache-Control", "no-cache, no-store, must-revalidate");
             session.setAttribute("email", loginEmail);
             session.setAttribute("username",userLogin.getName());
-            response.sendRedirect("ProfilePage");
+    response.sendRedirect("ProfilePage");
+
             session.setAttribute("userSession", "loggedin");
-        } else {
+
+        }
+        else {
             RequestDispatcher rs = request.getRequestDispatcher("index.jsp");
             out.println("Username or Password incorrect");
             rs.include(request, response);
