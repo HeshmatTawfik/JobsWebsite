@@ -47,6 +47,26 @@
         <servlet-name>Logout</servlet-name>
         <url-pattern>/Logout</url-pattern>
     </servlet-mapping>
+    <servlet>
+        <servlet-name>ApplicantPage</servlet-name>
+        <jsp-file>/ApplicantPage.jsp</jsp-file>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>ApplicantPage</servlet-name>
+
+        <url-pattern>/ApplicantPage</url-pattern>
+
+    </servlet-mapping>
+    <servlet>
+        <servlet-name>EmployerPage</servlet-name>
+        <jsp-file>/EmployerPage.jsp</jsp-file>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>EmployerPage</servlet-name>
+
+        <url-pattern>/EmployerPage</url-pattern>
+
+    </servlet-mapping>
     <error-page>
         <error-code>404</error-code>
         <location>/Error404.jsp</location>
