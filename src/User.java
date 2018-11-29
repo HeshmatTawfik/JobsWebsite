@@ -5,7 +5,7 @@ public class User {
     private int age;
     private String city;
     private String email;
-    boolean isEmployer;
+   // boolean isEmployer;
     private int appliedJob;
 
     private int postedjobs;
@@ -79,13 +79,13 @@ public class User {
         this.email = email;
     }
 
-    public boolean isEmployer() {
+ /*   public boolean isEmployer() {
         return isEmployer;
-    }
+    }*/
 
-    public void setEmployer(boolean employer) {
+  /*  public void setEmployer(boolean employer) {
         isEmployer = employer;
-    }
+    }*/
 
     public int getAppliedJob() {
         return appliedJob;
@@ -110,14 +110,20 @@ public class User {
         this.setEmail(email);
         this.setPass(pass);
 
+
     }
 
-    public User(String name, String email, String pass, int age, String city, String role) {
+    public User(String name, String email, String pass, int age, String city) {
         this.setName(name);
         this.setEmail(email);
         this.setPass(pass);
         this.setAge(age);
         this.setCity(city);
+
+    }
+    public User( String email, String pass,String role) {
+        this.setEmail(email);
+        this.setPass(pass);
         this.setRole(role);
 
     }

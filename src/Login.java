@@ -9,22 +9,25 @@ public class Login extends HttpServlet {
 
         String loginEmail = request.getParameter("email");
         String logInpass = request.getParameter("pass");
+
         PrintWriter out = response.getWriter();
         response.setContentType("text/html;charset=UTF-8");
         User userLogin = new User(loginEmail, logInpass);
 
-       //  if (UserDAO.userLogin(new User().getName(), new User().getPass(), new User())){
-        if (UserDAO.userLogin(userLogin.getEmail(), userLogin.getPass(), userLogin)) {
+        if (UserDAO.userLogin(userLogin.getEmail(), userLogin.getPass(), userLogin.getRole(), userLogin)) {
             HttpSession session = request.getSession();
             response.setHeader("Cache-Control", "no-cache, no-store, must-revalidate");
             session.setAttribute("email", loginEmail);
-            session.setAttribute("username",userLogin.getName());
-    response.sendRedirect("ProfilePage");
+            session.setAttribute("username", userLogin.getName());
+            if (userLogin.getRole().equals("employer")) {
+                response.sendRedirect("EmployerPage.jsp");
+            } else if (userLogin.getRole().equals("applicant")) {
+                response.sendRedirect("ApplicantPage.jsp");
+            }
 
             session.setAttribute("userSession", "loggedin");
 
-        }
-        else {
+        } else {
             RequestDispatcher rs = request.getRequestDispatcher("index.jsp");
             out.println("Username or Password incorrect");
             rs.include(request, response);
