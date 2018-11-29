@@ -11,6 +11,13 @@
     <title>Applicant</title>
 </head>
 <body>
-<p>hello applicant</p>
+
+        <h1>Hello <%=  session.getAttribute("username")%></h1>
+        <h2>looking for a job ?
+            you can see what employers are looking for !!
+        </h2>
+        <input type="button" value="check available jobs"  onclick=window.location.href='AvailableJobs.jsp'> <br/>
+
+        <form action="Logout"><input type="submit" value="Logout"></form> <br/>
 </body>
 </html>
